@@ -25,7 +25,7 @@ const Header = () =>{
                             <p className="text-xs text-white font-semi-bold">2</p>
                         </div>
                     </div>
-                    <img src={Avatar} alt="profilePicture" className="w-10 min-w-[40px] h-10 min-h-[40px]shadow-2x1"/>
+                    <img src={Avatar} alt="profilePicture" className="w-10 min-w-[40px] h-10 min-h-[40px]drop-shadow-xl"/>
                 </div>
             </div>
 
