@@ -2,16 +2,18 @@ import React from 'react'
 import { MdShoppingCart } from 'react-icons/md'
 import Logo from '../img/logo.png'
 import Avatar from '../img/avatar.png'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const Header = () =>{
     return(
         <div className='fixed z-50 w-screen p-6 px-16'>
             {/* desktop & tablet */}
             <div className="hidden md:flex w-full h-full items-center justify-between">
-                <div className='flex items-center gap-2'>
+                <Link to="/" className='flex items-center gap-2'>
                     <img src={Logo} alt="logo" className="w-10 object-cover"/>
                     <p className="text-headingColor text-xl font-bold"> City</p>
-                </div>
+                </Link>
                 <div className="flex items-center gap-8">
                     <ul className="flex items-center gap-8">
                         <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer">Home</li>
@@ -25,7 +27,7 @@ const Header = () =>{
                             <p className="text-xs text-white font-semi-bold">2</p>
                         </div>
                     </div>
-                    <img src={Avatar} alt="profilePicture" className="w-10 min-w-[40px] h-10 min-h-[40px]drop-shadow-xl"/>
+                    < motion.img src={Avatar} whileTap={{ scale:0.6 }} alt="profilePicture" className="w-10 min-w-[40px] h-10 min-h-[40px]drop-shadow-xl hover:cursor-pointer"/>
                 </div>
             </div>
 
