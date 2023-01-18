@@ -1,11 +1,30 @@
 import React from 'react'
-import { MdShoppingCart } from 'react-icons/md'
+import { MdShoppingCart,MdAdd,MdLogout } from 'react-icons/md'
 import Logo from '../img/logo.png'
 import Avatar from '../img/avatar.png'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from "../firebase.config"
+import { useStateValue } from '../context/StateProvider'
+import { actionType } from '../context/reducer'
 
 const Header = () =>{
+    const firebaseAuth = getAuth(app)
+    const provider = new GoogleAuthProvider()
+    const [{user},dispatch] = useStateValue()
+
+    const login = async () =>{
+        if(!user){
+            const {user:{refreshToken,providerData}} = await signInWithPopup(firebaseAuth,provider)
+            dispatch({
+                type:actionType.SET_USER,
+                user: providerData[0]
+            })
+            localStorage.setItem("user-profile",JSON.stringify(providerData[0]))
+        }
+    }
+
     return(
         <div className='fixed z-50 w-screen p-6 px-16'>
             {/* desktop & tablet */}
@@ -27,7 +46,17 @@ const Header = () =>{
                             <p className="text-xs text-white font-semi-bold">2</p>
                         </div>
                     </div>
-                    < motion.img src={Avatar} whileTap={{ scale:0.6 }} alt="profilePicture" className="w-10 min-w-[40px] h-10 min-h-[40px]drop-shadow-xl hover:cursor-pointer"/>
+                    <div className="relative">
+                        < motion.img src={ user ? user.photoURL : Avatar} whileTap={{ scale:0.6 }} alt="profilePicture" className="w-10 min-w-[40px] h-10 min-h-[40px]drop-shadow-xl hover:cursor-pointer rounded-full" onClick={ login }/>
+                        <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute px-2 py-2 top-12 right-0">
+                            <p className="flex items-center gap-3 cursor-pointer hover:color-slate-100 transition-all duration-100 ease-in-out text-textColor text-base">
+                                <MdAdd/> New Item 
+                            </p>
+                            <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:color-slate-100 transition-all duration-100 ease-in-out text-textColor text-base">
+                                <MdLogout/> Logout 
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
