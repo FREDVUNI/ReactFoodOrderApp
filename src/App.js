@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 
 function App() {
   return (
-    <AnimatePresence>
+    <AnimatePresence mode='wait'>
     <div className="w-screen h-screen flex-col flex bg-primary">
       <Header/>
       <main className="mt-24 p-8 w-full">
