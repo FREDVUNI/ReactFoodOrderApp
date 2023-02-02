@@ -29,11 +29,11 @@ const HomeContainer = () =>{
                 <img src={HeroBg} className="ml-auto h-420 w-full lg:w-auto lg:h-650" alt="hero-bg"/>
                 <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center lg:px-32  py-4 gap-4 flex-wrap">
                 { heroData && heroData.map((data) =>(
-                    <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap" key={data.id}>
+                    <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrapbackdrop-blur-md rounded-3xl w-100" key={data.id}>
                         <div className="basis-1/3 flex-1">
-                        <img src={data.img} className="w-40 -mt-20" alt={data.name}/>
-                            <p className="text-xl font-semibold text-textColor mt-4">{data.name}</p>
-                            <p className="text-sm text-lighttextGray font-semibold my-3">{data.details}</p>
+                        <img src={data.img} className="w-20 lg:w-40 -mt-10 lg:-mt-20" alt={data.name}/>
+                            <p className="text-base lg:text-xl font-semibold text-textColor mt-2 lg:mt-4">{data.name}</p>
+                            <p className="text-[12px] lg:text-sm text-lighttextGray font-semibold my-1 lg:my-3">{data.details}</p>
                             <p className="text-sm font-semibold text-headingColor">
                                 <span className="text-xs text-red-600">$</span> {data.price}
                             </p>

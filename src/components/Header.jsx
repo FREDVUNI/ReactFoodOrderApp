@@ -39,10 +39,10 @@ const Header = () =>{
     }
 
     return(
-        <header className='fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16'>
+        <header className='fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary'>
             {/* desktop & tablet */}
             <div className="hidden md:flex w-full h-full items-center justify-between">
-                <Link to="/" className='flex items-center gap-2'>
+                <Link to="/" className='flex items-center gap-2' onClick={() => setIsMenu(false)}>
                     <img src={Logo} alt="logo" className="w-10 object-cover"/>
                     <p className="text-headingColor text-xl font-bold"> City</p>
                 </Link>
@@ -52,10 +52,10 @@ const Header = () =>{
                         animate={{ opacity:1,x:0 }}
                         exit={{ opacity:0,x:200 }}
                         className="flex items-center gap-8">
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer">Home</li>
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer">Menu</li>
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer">About us</li>
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer">Services</li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>Home</li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>Menu</li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>About us</li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>Services</li>
                     </motion.ul>
                     <div className="relative flex justify-center items-center">
                         <MdShoppingCart className="text-textColor text-2x1 cursor-pointer"/>
@@ -73,7 +73,7 @@ const Header = () =>{
                             className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute px-2 py-2 top-12 right-0">
                             { user && user.email === 'fredvuni809@gmail.com' &&(
                                 <Link to={'/create'}>
-                                    <p className="flex items-center gap-3 cursor-pointer hover:color-slate-100 transition-all duration-100 ease-in-out text-textColor text-base">
+                                    <p className="flex items-center gap-3 cursor-pointer hover:color-slate-100 transition-all duration-100 ease-in-out text-textColor text-base" onClick={() => setIsMenu(false)}>
                                         <MdAdd/> New Item 
                                     </p>
                                 </Link>
