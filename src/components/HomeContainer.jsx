@@ -20,8 +20,9 @@ const HomeContainer = () =>{
                 </span>
                 </p>
                 <p className="text-base text-textColor md:text-left md:w-[80%]">
-                    lorem ispsum lorem ispsum The Fastest Delivery In lorem ispsum lorem ispsum The Fastest Delivery In
-                    lorem ispsum lorem ispsum The Fastest Delivery In lorem ispsum lorem ispsum The Fastest Delivery In
+                    Don’t worry, our team of ninjas will go out fighting to deliver your package on time.
+                    Deliver + fast = we are faster than you can imagine.
+                    We get it done, so you don’t have to worry.
                 </p>
                 <button type="button" className="bg-gradient-to-br from-orange-400 to-orange-500 md:w-auto w-full px-4 py-2 hover:shadow-lg transition-all ease-in-out duration-100">Order Now</button>
             </div>
