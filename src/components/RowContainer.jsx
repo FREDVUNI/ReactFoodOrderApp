@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 
 const RowContainer = ({flag,data}) => {
   return (
-    <div className={`w-full flex items-center my-12 ${flag ? 'overflow-x-scroll':'overflow-hidden'}`}>
+    <div className={`w-full flex items-center gap-3 my-12 ${flag ? 'overflow-x-scroll':'overflow-hidden flex-wrap'}`}>
         {
           data && data.map((item) =>(
-            <div key={item.id} className='w-300 md:w-340 h-auto bg-cardOverlay rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg'>
+            <div key={item.id} className='w-300 min-w-[300px] md:w-340 md:min-w[340px] h-auto bg-cardOverlay rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg'>
             <div className='w-full flex items-center justify-between'>
                 <motion.img 
                     whileHover={{ scale:1.2 }} 
