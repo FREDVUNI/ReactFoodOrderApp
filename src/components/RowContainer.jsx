@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const RowContainer = ({flag,data}) => {
   return (
-    <div className={`w-full my-12 ${flag ? 'overflow-x-scroll':'overflow-hidden'}`}>
+    <div className={`w-full flex items-center my-12 ${flag ? 'overflow-x-scroll':'overflow-hidden'}`}>
         {
           data && data.map((item) =>(
             <div key={item.id} className='w-300 md:w-340 h-auto bg-cardOverlay rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg'>
