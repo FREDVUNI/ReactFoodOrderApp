@@ -17,5 +17,5 @@ export const categories = [
     {id:4,name:"Fish",urlParamName:'fish'},
     {id:5,name:"Fruits",urlParamName:'fruits'},
     {id:6,name:"Ice Cream",urlParamName:'ice cream'},
-    {id:7,name:"Soft Drinks",urlParamName:'drinks'},
+    {id:7,name:"Soft Drinks",urlParamName:'soft drinks'},
 ]
