@@ -11,6 +11,9 @@ import {
   } from "firebase/storage";
 import { storage } from "../firebase.config";
 import { saveItem } from '../utils/fireBaseFunctions'
+import { useStateValue } from '../context/StateProvider'
+import { getFoodItems } from '../utils/fireBaseFunctions'
+import { actionType } from '../context/reducer'
 
 const CreateContainer = () =>{
     const [title,setTitle] = useState("")
@@ -22,6 +25,8 @@ const CreateContainer = () =>{
     const [alertStatus,setAlertStatus] = useState("danger")
     const [msg,setMsg] = useState(null)
     const [isLoading,setIsLoading] = useState(false)
+
+    const [{foodItems},dispatch] = useStateValue()
 
     const uploadImage = (e) =>{
         setIsLoading(true)
@@ -109,6 +114,7 @@ const CreateContainer = () =>{
                     setFields(false)
                 },4000)
             }
+            fetchData()
         }
         catch(error){
             console.log(error)
@@ -130,6 +136,16 @@ const CreateContainer = () =>{
         setCalories("")
         setCategory("Select category")
         setPrice("")
+    }
+
+    const fetchData = async() =>{
+        await getFoodItems()
+        .then((data) =>{
+          dispatch({
+            type: actionType.SET_FOOD_ITEMS,
+            foodItems: data
+          })
+        })
     }
 
     return(

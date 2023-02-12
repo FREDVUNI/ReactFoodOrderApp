@@ -1,9 +1,28 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Header,MainContainer,CreateContainer } from './components'
 import { Routes,Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { useStateValue } from './context/StateProvider'
+import { getFoodItems } from './utils/fireBaseFunctions'
+import { actionType } from './context/reducer'
 
 function App() {
+  const [{foodItems},dispatch] = useStateValue()
+
+  const fetchData = async() =>{
+      await getFoodItems()
+      .then((data) =>{
+        dispatch({
+          type: actionType.SET_FOOD_ITEMS,
+          foodItems: data
+        })
+      })
+  }
+
+  useEffect(() =>{
+    fetchData()
+  },[])
+
   return (
     <AnimatePresence mode='wait'>
     <div className="w-screen h-auto flex flex-col bg-primary">
