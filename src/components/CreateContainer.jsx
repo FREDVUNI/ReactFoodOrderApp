@@ -70,7 +70,7 @@ const CreateContainer = () =>{
 
             setTimeout(() =>{
                 setFields(false)
-            },400)
+            },4000)
         })
     }
 
