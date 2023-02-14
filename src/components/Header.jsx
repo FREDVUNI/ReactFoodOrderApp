@@ -39,7 +39,7 @@ const Header = () =>{
     }
 
     return(
-        <header className='fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary'>
+        <header className='fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-white'>
             {/* desktop & tablet */}
             <div className="hidden md:flex w-full h-full items-center justify-between">
                 <Link to="/" className='flex items-center gap-2' onClick={() => setIsMenu(false)}>
