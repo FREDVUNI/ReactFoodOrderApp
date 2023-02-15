@@ -9,14 +9,15 @@ const RowContainer = ({flag,data,scrollValue}) => {
     const rowContainer = useRef()
     const [{cartItems},dispatch] = useStateValue()
     const [items,setItems] = useState([])
+        
+    let cart = JSON.parse(localStorage.getItem("cartItems"))
 
     const addToCart = () =>{
         dispatch({
             type: actionType.SET_CART,
             cartItems:items
         })
-
-        localStorage.setItem("cart-items",JSON.stringify(items))
+        localStorage.setItem("cartItems",JSON.stringify(items))
     }
 
     useEffect(() =>{
