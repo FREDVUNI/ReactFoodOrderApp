@@ -13,7 +13,7 @@ const Header = () =>{
     const [isMenu,setIsMenu] = useState(false)
     const firebaseAuth = getAuth(app)
     const provider = new GoogleAuthProvider()
-    const [{user},dispatch] = useStateValue()
+    const [{user,showCart},dispatch] = useStateValue()
 
     const login = async () =>{
         if(!user){
@@ -38,6 +38,13 @@ const Header = () =>{
         })
     }
 
+    const toggleCart = () =>{
+        dispatch({
+            type:actionType.SET_SHOW_CART,
+            showCart: !showCart
+        })
+    }
+
     return(
         <header className='fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-white'>
             {/* desktop & tablet */}
@@ -57,7 +64,7 @@ const Header = () =>{
                         <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>About us</li>
                         <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>Services</li>
                     </motion.ul>
-                    <div className="relative flex justify-center items-center">
+                    <div className="relative flex justify-center items-center" onClick={toggleCart}>
                         <MdShoppingCart className="text-textColor text-2x1 cursor-pointer"/>
                         <div className="absolute -top-4 -right-3 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
                             <p className="text-xs text-white font-semi-bold">2</p>
@@ -89,7 +96,7 @@ const Header = () =>{
 
             {/* mobile */}
             <div className="flex items-center justify-between md:hidden w-full h-full">
-                <div className="relative flex justify-center items-center">
+                <div className="relative flex justify-center items-center" onClick={toggleCart}>
                     <MdShoppingCart className="text-textColor text-2x1 cursor-pointer"/>
                     <div className="absolute -top-4 -right-3 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
                         <p className="text-xs text-white font-semi-bold">2</p>
