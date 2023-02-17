@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
 
-const CartItem = ({item}) => {
+const CartItem = ({item,setFlag,flag}) => {
     const [qty,setQty] = useState(item.qty)
     let items = []
     const [{cartItems},dispatch] = useStateValue()
@@ -24,6 +24,7 @@ const CartItem = ({item}) => {
             cartItems.map((item) =>{
                 if(item.id === id){
                     item.qty += 1
+                    setFlag(flag + 1)
                 }
             })
             cartDispatch()
@@ -37,6 +38,7 @@ const CartItem = ({item}) => {
                 cartItems && cartItems.map((item) =>{
                     if(item.id == id){
                         item.qty -= 1
+                        setFlag(flag + 1)
                     }
                 })
                 cartDispatch()

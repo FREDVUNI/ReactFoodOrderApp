@@ -6,11 +6,16 @@ import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
 
 const RowContainer = ({flag,data,scrollValue}) => {
+    let cart = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+
     const rowContainer = useRef()
     const [{cartItems},dispatch] = useStateValue()
-    const [items,setItems] = useState([])
+    const [items,setItems] = useState(cart)
+    let exists
+
+    const existing = () =>{
         
-    let cart = JSON.parse(localStorage.getItem("cartItems"))
+    }
 
     const addToCart = () =>{
         dispatch({

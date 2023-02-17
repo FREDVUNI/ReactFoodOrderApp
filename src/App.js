@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 import { useStateValue } from './context/StateProvider'
 import { getFoodItems } from './utils/fireBaseFunctions'
 import { actionType } from './context/reducer'
+import Footer from './components/Footer'
 
 function App() {
   const [{foodItems},dispatch] = useStateValue()
@@ -34,6 +35,7 @@ function App() {
           </Routes>
       </main>
     </div>
+    <Footer/>
     </AnimatePresence>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import { RiRefreshFill } from 'react-icons/ri'
 import { motion } from 'framer-motion'
@@ -9,6 +9,10 @@ import CartItem from './CartItem'
 
 const CartContainer = () => {
     const [{showCart,cartItems,user},dispatch] = useStateValue()
+    const [flag, setFlag] = useState(1);
+    const [totalAmount,setTotalAmount] = useState(0)
+    let deliveryCharge = 2.5
+    // let cart = localStorage.getItem("cartItems")
 
     const toggleCart = () =>{
         dispatch({
@@ -16,6 +20,22 @@ const CartContainer = () => {
             showCart: !showCart
         })
     }
+
+    const clearCart = ()  =>{
+        dispatch({
+            type:actionType.SET_CART,
+            cartItems: []
+        })
+
+        localStorage.setItem("cartItems",JSON.stringify([]))
+    }
+
+    useEffect(() =>{
+        let amount = cartItems.reduce((acc,item) =>{
+            return acc + item.price * item.qty
+        },0)
+        setTotalAmount(amount)
+    },[totalAmount,flag])
 
     useEffect(() =>{},[showCart])
   return ( 
@@ -29,7 +49,7 @@ const CartContainer = () => {
                 <MdOutlineKeyboardBackspace className='text-textColor text-3x1'/>
             </motion.div>
             <p className="text-textColor text-lg font-semibold">cart</p>
-            <motion.p whileTap={{ scale:0.75 }} className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100 rounded-md hover:shadow-md duration-100 ease-in-out transition-all cursor-pointer text-textColor text-base">
+            <motion.p whileTap={{ scale:0.75 }} className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100 rounded-md hover:shadow-md duration-100 ease-in-out transition-all cursor-pointer text-textColor text-base" onClick={() => clearCart()}>
                 clear  <RiRefreshFill/> {" "}
             </motion.p>
         </div>
@@ -37,22 +57,22 @@ const CartContainer = () => {
         <div className='w-full h-full bg-gray-100 rounded-t-[2rem] flex flex-col'>
             <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
                 {cartItems && cartItems.map((item) =>(
-                    <CartItem key={item.id} item={item}/>
+                    <CartItem key={item.id} item={item} flag={flag} setFlag={setFlag}/>
                 ))}
             </div>
             <div className='w-full flex-1 bg-cartTotal rounded-t-[1rem] flex flex-col items-center justify-evenly px-8 py-2'>
                     <div className="w-full flex items-center justify-between">
                         <div className="text-gray-400 text-lg">Sub Total</div>
-                        <div className="text-gray-400 text-lg">$ 8.9</div>
+                        <div className="text-gray-400 text-lg">$ {totalAmount}</div>
                     </div>
                     <div className="w-full flex items-center justify-between">
                         <div className="text-gray-400 text-lg">Delivery</div>
-                        <div className="text-gray-400 text-lg">$ 8.9</div>
+                        <div className="text-gray-400 text-lg">$ {deliveryCharge}</div>
                     </div>
                     <div className="w-full border-b border-gray-600 my-2"></div>
                     <div className="w-full flex items-center justify-between">
                         <div className="text-gray-400 text-lg">Total</div>
-                        <div className="text-gray-400 text-lg">$ 8.9</div>
+                        <div className="text-gray-400 text-lg">$ {totalAmount + deliveryCharge}</div>
                     </div>
 
                     {
