@@ -10,7 +10,7 @@ const BannerConatiner = ({text}) => {
             </div>
             <div className='flex'>
             {heroData && heroData.map((data) =>(
-                <img  key={data.id} src={data.img} alt={data.name} className="w-20 lg:w-40 -mt-10"/>
+                <img key={data.id} src={data.img} alt={data.name} className="w-20 lg:w-40 -mt-10"/>
             ))}
             </div>
         </div>
