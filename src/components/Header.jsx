@@ -59,10 +59,18 @@ const Header = () =>{
                         animate={{ opacity:1,x:0 }}
                         exit={{ opacity:0,x:200 }}
                         className="flex items-center gap-8">
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>Home</li>
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>Menu</li>
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>About us</li>
-                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>Services</li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>
+                            <Link to='/'>Home</Link>
+                        </li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>
+                        <Link to='/menu'>Menu</Link>
+                        </li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>
+                        <Link to='/about-us'>About us</Link>
+                        </li>
+                        <li className="text-base text-headingColor  hover:text-headingColor duration-100 transition-all ease cursor-pointer" onClick={() => setIsMenu(false)}>
+                        <Link to='/services'>Services</Link>
+                        </li>
                     </motion.ul>
                     <div className="relative flex justify-center items-center" onClick={toggleCart}>
                         <MdShoppingCart className="text-textColor text-2x1 cursor-pointer"/>

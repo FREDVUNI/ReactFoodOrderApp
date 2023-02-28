@@ -6,6 +6,9 @@ import { useStateValue } from './context/StateProvider'
 import { getFoodItems } from './utils/fireBaseFunctions'
 import { actionType } from './context/reducer'
 import Footer from './components/Footer'
+import Menu from './pages/Menu'
+import Services from './pages/Services'
+import About from './pages/About'
 
 function App() {
   const [{foodItems},dispatch] = useStateValue()
@@ -31,6 +34,9 @@ function App() {
       <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
           <Routes>
             <Route path="/*" element={<MainContainer/>}/>
+            <Route path='/menu' element={<Menu/>}/>
+            <Route path='/services' element={<Services/>}/>
+            <Route path='/about-us' element={<About/>}/>
             <Route path="/create" element={<CreateContainer/>}/>
           </Routes>
       </main>
